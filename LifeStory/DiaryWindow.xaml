@@ -1,0 +1,100 @@
+﻿<Window x:Class="LifeStory.DiaryWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:Fluent="urn:fluent-ribbon"
+        xmlns:local="clr-namespace:LifeStory"
+        mc:Ignorable="d"
+        Title="LifeStory" Height="450" Width="700" Closing="Window_Closing">
+
+    <Grid>
+        <Fluent:Ribbon Panel.ZIndex="1">
+            <Fluent:RibbonTabItem Header="Plik">
+                <Fluent:RibbonGroupBox Header="Plik" TabIndex="0">
+                    <Button x:Name="saveButton" HorizontalContentAlignment="Left" HorizontalAlignment="Left" VerticalAlignment="Top" Height="25" Width="100" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Click="saveButton_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" Foreground="BlueViolet" FontWeight="ExtraBold" FontSize="20" Text="&#xE74E;" Height="25" Width="25"/>
+                            <TextBlock Text="Zapisz" Foreground="DarkGray" FontSize="12" Height="25"/>
+                        </StackPanel>
+                    </Button>
+                </Fluent:RibbonGroupBox>
+            </Fluent:RibbonTabItem>
+            <Fluent:RibbonTabItem Header="Narzędzia główne">
+                <Fluent:RibbonGroupBox Header="Kartki" TabIndex="0">
+                    <Button x:Name="newPageButton" HorizontalContentAlignment="Left" HorizontalAlignment="Left" VerticalAlignment="Top" Height="25" Width="100" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Click="newPageButton_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" Foreground="Orange" FontWeight="ExtraBold" FontSize="20" Text="&#xE8F4;" Height="25" Width="25"/>
+                            <TextBlock Text="Nowa kartka" Foreground="DarkGray" FontSize="12" Height="25" Width="75" Margin="0,2,0,0"/>
+                        </StackPanel>
+                    </Button>
+                    <Button x:Name="deletePageButton" HorizontalContentAlignment="Left" HorizontalAlignment="Left" Width="100" Height="25" VerticalAlignment="Top" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Click="deletePageButton_Click">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" Foreground="IndianRed" FontWeight="ExtraBold" FontSize="20" Text="&#xE74D;" Height="25" Width="25" Margin="1.25,0,0,0"/>
+                            <TextBlock Text="Usuń kartkę" Foreground="DarkGray" FontSize="12" Height="25" Width="75" Margin="0,2,0,0"/>
+                        </StackPanel>
+                    </Button>
+                </Fluent:RibbonGroupBox>
+                <Fluent:RibbonGroupBox Header="Czcionka" TabIndex="1">
+                    <StackPanel Orientation="Horizontal">
+                        <ComboBox x:Name="fontSelectionComboBox" IsEditable="True" Width="100" Height="25" ItemsSource="{Binding Source={x:Static Fonts.SystemFontFamilies}}" SelectionChanged="fontSelectionComboBox_SelectionChanged"/>
+                        <ComboBox x:Name="fontSizeComboBox" IsEditable="True" Width="50" Height="25" SelectionChanged="FontSizeComboBox_SelectionChanged"/>
+                        <Button x:Name="increaseFontSizeButton" HorizontalAlignment="Left" Width="25" Height="25" VerticalAlignment="Top" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Click="IncreaseFontSizeButton_Click">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" Foreground="Black" FontWeight="ExtraBold" FontSize="20" Text="&#xE8E8;"/>
+                        </Button>
+                        <Button x:Name="decreaseFontSizeButton" HorizontalAlignment="Left" Width="25" Height="25" VerticalAlignment="Top" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Click="DecreaseFontSizeButton_Click">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" Foreground="Black" FontWeight="ExtraBold" FontSize="20" Text="&#xE8E7;"/>
+                        </Button>
+                    </StackPanel>
+                    
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="boldTextButton" HorizontalAlignment="Left" Width="25" Height="25" VerticalAlignment="Top" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Click="boldTextButton_Click">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" Foreground="Black" FontWeight="ExtraBold" FontSize="20" Text="&#xE8DD;"/>
+                        </Button>
+                        <Button x:Name="italicTextButton" HorizontalAlignment="Left" Width="25" Height="25" VerticalAlignment="Top" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Click="italicTextButton_Click">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" Foreground="Black" FontWeight="ExtraBold" FontSize="20" Text="&#xE8DB;"/>
+                        </Button>
+                        <Button x:Name="underlineTextButton" HorizontalAlignment="Left" Width="25" Height="25" VerticalAlignment="Top" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Click="underlineTextButton_Click">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" Foreground="Black" FontWeight="ExtraBold" FontSize="20" Text="&#xE8DC;"/>
+                        </Button>
+                    </StackPanel>
+                </Fluent:RibbonGroupBox>
+                <Fluent:RibbonGroupBox Header="Akapit" TabIndex="2">
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="bulletedListButton" HorizontalAlignment="Left" Width="25" Height="25" VerticalAlignment="Top" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Click="BulletedListButton_Click">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" Foreground="Black" FontWeight="ExtraBold" FontSize="20" Text="&#xE8FD;"/>
+                        </Button>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="alignLeftButton" HorizontalAlignment="Left" Width="25" Height="25" VerticalAlignment="Top" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Click="alignLeftButton_Click">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" Foreground="Black" FontWeight="ExtraBold" FontSize="20" Text="&#xE8E4;"/>
+                        </Button>
+                        <Button x:Name="alignCenterButton" HorizontalAlignment="Left" Width="25" Height="25" VerticalAlignment="Top" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Click="alignCenterButton_Click">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" Foreground="Black" FontWeight="ExtraBold" FontSize="20" Text="&#xE8E3;"/>
+                        </Button>
+                        <Button x:Name="alignRightButton" HorizontalAlignment="Left" Width="25" Height="25" VerticalAlignment="Top" BorderThickness="0" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Click="alignRightButton_Click">
+                            <TextBlock FontFamily="Segoe MDL2 Assets" Foreground="Black" FontWeight="ExtraBold" FontSize="20" Text="&#xE8E2;"/>
+                        </Button>
+                    </StackPanel>
+                </Fluent:RibbonGroupBox>
+            </Fluent:RibbonTabItem>
+        </Fluent:Ribbon>
+        <Image Source="/Background.jpg" Stretch="Fill" Opacity="1" Panel.ZIndex="0"/>
+        <ListView x:Name="pagesListBox" HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="200" SelectionMode="Extended"  SelectionChanged="pagesListBox_SelectionChanged" Margin="0,23,0,20">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <WrapPanel Orientation="Horizontal">
+                        <Label Content="{Binding CreateTime, StringFormat='yyyy-MM-dd HH:mm:ss'}" FontWeight="Light"/>
+                        <TextBox x:Name="pageNameTextBox" BorderThickness="0" Text="{Binding Name}" TextChanged="pageNameTextBox_TextChanged" VerticalContentAlignment="Center" IsEnabled="False"/>
+                    </WrapPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <RichTextBox x:Name="pageRichTextBox" HorizontalAlignment="Left" Margin="200,23,0,20" VerticalAlignment="Stretch" IsEnabled="False" SelectionChanged="pageRichTextBox_SelectionChanged"/>
+        <StatusBar Height="20" VerticalAlignment="Bottom">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock x:Name="cursorPositionTextBlock" Height="20" HorizontalAlignment="Left"/>
+            </StackPanel>
+        </StatusBar>
+    </Grid>
+</Window>
